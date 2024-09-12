@@ -3,7 +3,7 @@
   "title": "Fix Item Description Bug",
   "description": "This module fixes the issue where identified descriptions are shown for unidentified items.",
   "version": "1.0.0",
-  "author": "Your Name",
+  "author": "UncleUrdnot",
   "esmodules": ["scripts/fix-item-description.js"],
   "styles": [],
   "packs": [],
@@ -15,7 +15,7 @@
       "version": "1.12.14"
     }
   ],
-  "url": "https://your-github-username.github.io/repository-name/",
-  "manifest": "https://your-github-username.github.io/repository-name/module.json",
-  "download": "https://github.com/your-github-username/repository-name/archive/refs/heads/master.zip"
+  "url": "https://uncleurdnot.github.io/foundryVTT-fix-item-5e-unidentified-description /",
+  "manifest": "https://uncleurdnot.github.io/foundryVTT-fix-item-5e-unidentified-description /module.json",
+  "download": "https://github.com/uncleurdnot/foundryVTT-fix-item-5e-unidentified-description /archive/refs/heads/master.zip"
 }
