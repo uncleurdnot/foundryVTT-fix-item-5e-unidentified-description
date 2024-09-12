@@ -3,7 +3,7 @@ name: Publish Module
 on:
   push:
     branches:
-      - master 
+      - master
 
 jobs:
   build:
@@ -20,11 +20,33 @@ jobs:
 
       - name: Generate module.json
         run: |
-          echo '{
+          printf '{
             "name": "fix-item-description-bug",
             "title": "Fix Item Description Bug",
             "description": "This module fixes the issue where identified descriptions are shown for unidentified items.",
             "version": "1.0.0",
             "author": "Your Name",
-            "esmodules": ["scripts/fix-item-description
+            "esmodules": ["scripts/fix-item-description.js"],
+            "styles": [],
+            "packs": [],
+            "systems": [],
+            "dependencies": [
+              {
+                "name": "lib-wrapper",
+                "type": "module",
+                "version": "1.12.14"
+              }
+            ],
+            "url": "https://your-github-username.github.io/repository-name/",
+            "manifest": "https://your-github-username.github.io/repository-name/module.json",
+            "download": "https://github.com/your-github-username/repository-name/archive/refs/heads/master.zip"
+          }' > module.json
+
+      - name: Deploy module
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add module.json
+          git commit -m "Update module.json"
+          git push origin master
 
