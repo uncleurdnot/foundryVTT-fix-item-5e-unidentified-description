@@ -10,36 +10,44 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Git
-      run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-    - name: Generate module.json
-      run: |
-        echo '{
-          "name": "fix-item-description-bug",
-          "title": "Fix Item Description Bug",
-          "description": "This module fixes the issue where identified descriptions are shown for unidentified items.",
-          "version": "1.0.0",
-          "author": "UncleUrdnot",
-          "esmodules": ["scripts/fix-item-description.js"]
-        }' > module.json
+      - name: Generate module.json
+        run: |
+          printf '{
+            "name": "fix-item-description-bug",
+            "title": "Fix Item Description Bug",
+            "description": "This module fixes the issue where identified descriptions are shown for unidentified items.",
+            "version": "1.0.0",
+            "author": "UncleUrdnot",
+            "esmodules": ["scripts/fix-item-description.js"],
+            "styles": [],
+            "packs": [],
+            "systems": [],
+            "dependencies": [
+              {
+                "name": "lib-wrapper",
+                "type": "module",
+                "version": "1.12.14"
+              }
+            ],
+            "url": "https://uncleurdnot.github.io/foundryVTT-fix-item-5e-unidentified-description /",
+            "manifest": "https://uncleurdnot.github.io/foundryVTT-fix-item-5e-unidentified-description /module.json",
+            "download": "https://github.com/uncleurdnot/foundryVTT-fix-item-5e-unidentified-description /archive/refs/heads/master.zip"
+          }' > module.json
 
-    - name: Check for changes
-      id: git-check
-      run: |
-        git diff --exit-code || echo "Changes detected"
-
-    - name: Commit and Push changes
-      if: steps.git-check.outputs.changed == 'true'
-      run: |
-        git add module.json
-        git commit -m "Update module.json"
-        git push origin master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: Deploy module
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add module.json
+          git commit -m "Update module.json"
+          git push origin master
