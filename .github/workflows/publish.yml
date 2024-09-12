@@ -1,0 +1,30 @@
+name: Publish Module
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Generate module.json
+        run: |
+          echo '{
+            "name": "fix-item-description-bug",
+            "title": "Fix Item Description Bug",
+            "description": "This module fixes the issue where identified descriptions are shown for unidentified items.",
+            "version": "1.0.0",
+            "author": "Your Name",
+            "esmodules": ["scripts/fix-item-description
+
