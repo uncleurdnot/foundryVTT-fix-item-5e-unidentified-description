@@ -1,14 +1,21 @@
 {
   "name": "fix-item-description-bug",
   "title": "Fix Item Description Bug",
-  "description": "A temporary fix for the item description display bug in Foundry VTT (DnD 5e system).",
+  "description": "This module fixes the issue where identified descriptions are shown for unidentified items.",
   "version": "1.0.0",
   "author": "Your Name",
-  "minimumCoreVersion": "11",
-  "compatibleCoreVersion": "11",
-  "scripts": ["scripts/fix-item-description.js"],
-  "esmodules": [],
+  "esmodules": ["scripts/fix-item-description.js"],
   "styles": [],
   "packs": [],
-  "system": "dnd5e"
+  "systems": [],
+  "dependencies": [
+    {
+      "name": "lib-wrapper",
+      "type": "module",
+      "version": "1.12.14"
+    }
+  ],
+  "url": "https://your-github-username.github.io/repository-name/",
+  "manifest": "https://your-github-username.github.io/repository-name/module.json",
+  "download": "https://github.com/your-github-username/repository-name/archive/refs/heads/master.zip"
 }
