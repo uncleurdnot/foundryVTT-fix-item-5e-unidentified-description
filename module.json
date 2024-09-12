@@ -1,0 +1,14 @@
+{
+  "name": "fix-item-description-bug",
+  "title": "Fix Item Description Bug",
+  "description": "A temporary fix for the item description display bug in Foundry VTT (DnD 5e system).",
+  "version": "1.0.0",
+  "author": "Your Name",
+  "minimumCoreVersion": "11",
+  "compatibleCoreVersion": "11",
+  "scripts": ["scripts/fix-item-description.js"],
+  "esmodules": [],
+  "styles": [],
+  "packs": [],
+  "system": "dnd5e"
+}
